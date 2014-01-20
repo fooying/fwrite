@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block script %}
+    <script type="text/javascript">
+        var column_id = "{{ article.column }}";
+    </script>
+{% endblock %}
+{% block title %}{{ article.title }} - {{ 'site_title'|get_base }}{% endblock%}
+{% block body %}
+
+    <div id="left_panel">
+        <div class="header">
+            <a herf="javascript:;" onClick="back();" class="back" style="display:none;">返回首页</a>
+            <h1 class="logo">{{ 'site_title'|get_base }}</h1>
+        </div>
+        
+        <div class="filter">
+            <div class="dropdown_list_wrap" >
+                <input  class="search" type="text" placeholder="请输入搜索关键词">
+            </div>
+        </div>
+        
+        <div class="nav_container">
+            <ul id="data_lister"></ul>
+        </div>
+    </div>
+    
+    <div id="right_panel" >
+        <div class="header">
+            <!--<a href="#" class="top_actions" id="top_actions">test</a>-->
+            <div class="top_actions">
+            <span id="comment_users"><a href="#changyan_area" id="changyan_count_unit">0</a></span>个评论<!--<span class="middot">·</span>
+            <span id="focus_count">0</span> 人关注 <span class="middot">·</span>
+            <span id="view_count">0</span> 次浏览
+            -->
+            
+            </div>
+            <div class="top_column">
+            {{ article.column_name }}         
+            </div>
+        </div>
+        
+        <div class="fwrite">
+            <h1 class="entry_title" id="entry_title">{{ article.title }}</h1>
+            <div class="fwrite_tags">
+                <ul id="fwrite_topics">
+                    {% for t in article.tag %}
+                        {% if t %}
+                        <li><a href="#">{{ t }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+                
+            </div>
+            <div class="fwrite_description" id="fwrite_description">
+                {{ article.content }}
+
+            </div>
+            
+            <div class="comment">
+                <div class="comment_info">
+                </div>
+                
+                <div class="comment_body">
+                    {{ 'comment_code'|get_base }}
+
+                    <div class="comment_meta">
+                        <span id="add_time">Powered By <a href="{{ 'fwrite'|get_url }}" target="blank">{{ 'Fwrite'|get_version }} </a><img src='/static/images/common/fooying.png' style=" margin-bottom: 4px; "></span> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   <!-- JiaThis Button BEGIN -->
+    <script type="text/javascript" >
+    var jiathis_config={
+        data_track_clickback:true,
+        summary:"",
+        imageUrl:"http://www.xssing.org/static/images/common/share.gif",
+        ralateuid:{
+            "tsina":"CnFooying"
+        },
+        showClose:true,
+        shortUrl:true,
+        hideMore:true
+    }
+    </script>
+    <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jiathis_r.js?uid=1589826&btn=r2.gif&move=0" charset="utf-8"></script>
+    <!-- JiaThis Button END -->
+     
+{% endblock %}
+

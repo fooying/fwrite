@@ -1,0 +1,22 @@
+{% extends "base_index.html" %}
+{% block body %}
+    <div id="left_panel">
+        <div class="header">
+            <a herf="javascript:;" onClick="back();" class="back" style="display:none;">返回首页</a>
+            <h1 class="logo">{{ 'site_title'|get_base }}</h1>
+        </div>
+        
+        <div class="filter">
+            记录类别            
+            <div class="dropdown_list_wrap" >
+                <input  class="search" type="text" placeholder="请输入搜索关键词">
+            </div>
+        </div>
+        
+        <div class="nav_container">
+            <ul id="data_lister"></ul>
+        </div>
+    </div>
+    
+{% endblock %}
+

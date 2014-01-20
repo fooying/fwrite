@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/common/apple_touch_icon.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/common/apple_touch_icon_114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/common/apple_touch_icon_72x72.png" />
+<link rel="apple-touch-icon-precomposed" href="/static/common/apple_touch_icon_57x57.png" />
+<link href="/static/css/fwrite.css" rel="stylesheet" type="text/css" />
+<title>{% block title %}后台管理-FWrite_简易个人笔记记录式程序{% endblock %}</title>
+<meta name="keywords" content="{% block keywords %}{{ 'site_keywords'|get_base }}{% endblock %}" />
+<meta name="descript" content="{% block descript %}{{ 'site_descript'|get_base }}{% endblock %}" />
+<meta name="author" content="Fooying" />
+<meta name="copyright" content="Fooying" />
+<base target="_blank" />
+{% block script %} {% endblock %}
+{% block style %} {% endblock %}
+</head>
+
+<body>
+    <!--[if lte IE 6]>
+    <div style="color:red;font-size:18px">你正在使用的浏览器版本太低, 将不能正常浏览本站的所有功能. 请升级 <a href="http://windows.microsoft.com/zh-CN/internet-explorer/downloads/ie">Internet Explorer</a> 或使用 <a href="http://www.google.com/chrome/">Google Chrome</a> 浏览器</div>
+    <![endif]-->
+ <div id="left_panel">
+        <div class="header">
+            <a href="/" class="back" >返回首页</a>
+            <h1 class="logo">后台管理</h1>
+        </div>
+        
+        <div class="filter">            
+        </div>
+        
+        <div class="nav_container">
+            <ul id="data_lister">
+                <li><a href="/{{ 'admin'|get_base }}" target="_self">后台首页</a></li>
+                <li><a href="/{{ 'admin'|get_base }}/base" target="_self">基本设置</a></li>
+                <li><a href="/{{ 'admin'|get_base }}/columns" target="_self">栏目管理</a></li>
+                <li><a href="/{{ 'admin'|get_base }}/article" target="_self">文章管理</a></li>
+                <li><a href="/{{ 'admin'|get_base }}/logout" target="_self">退出登陆</a></li>
+            </ul>
+        </div>
+    </div>
+
+{% block body %}{% endblock %}
+</body>
+</html>

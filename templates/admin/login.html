@@ -1,0 +1,45 @@
+{% extends "admin_base.html" %}
+{% block body %}
+    <div id="left_panel">
+    </div>
+    
+    <div id="right_panel">
+        <div class="header">
+            <h3>后台登陆</h3>  
+        </div>
+        
+        <div class="fwrite">
+            <div class="fwrite_description" id="fwrite_description">
+                <form action="/{{ 'admin'|get_base }}/login" method="POST" target="_self">
+                    <div class="admin_li">
+                        <span class="admin_span">帐号:</span><input class="admin_input" name="user" type='text'></br>
+                    </div>
+                    <div class="admin_li">
+                        <span class="admin_span">密码:</span><input class="admin_input" name="passwd" type='password'>
+                    </div>
+                    <div class="admin_li">
+                        <button type="submit">登陆</button>
+                        <button type="reset">重置</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="right_copy" class="hide">
+        <div class="logo">
+            <img src="/static/images/common/logo.png">
+        </div>
+        <div class="foot">
+            <div class="row">
+                <div class="powered">
+                    Powered By <a href="{{ 'fwrite'|get_url }}" target="blank">{{ 'Fwrite'|get_version }}</a><img src='/static/images/common/fooying.png' style=" margin-bottom: 4px; ">
+                </div>
+                <div class="copyright">
+                    Copyright © {{ 'copy'|get_year }} - {{ 'copy'|get_this_site }} - <a href="http://www.miibeian.gov.cn/" target="_blank">{{ 'test'|get_icp }}</a> 
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

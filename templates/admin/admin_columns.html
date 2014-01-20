@@ -1,0 +1,75 @@
+{% extends "admin_base.html" %}
+{% block script %} 
+<script src="/static/js/jquery.js" type="text/javascript"></script>
+<script>
+    function update_column(c_id){
+        var new_name = $("input#input_"+c_id).val();
+        if (new_name != "请输入新名称"){
+            window.location.href="/{{ 'admin'|get_base }}/columns?key="+c_id+"&new_name="+new_name;
+        }
+        else{
+            alert("请输入新栏目名!")
+        }
+    }
+    function SelectAll() {
+        var checkboxs=document.getElementsByName("columns");
+        for (var i=0;i<checkboxs.length;i++) {
+            var e=checkboxs[i];
+            e.checked=!e.checked;
+         }
+    }
+</script>
+
+{% endblock %}
+{% block body %}
+       
+    <div id="right_panel">
+        <div class="header">
+            <h3>栏目管理</h3>  
+        </div>
+        
+        <div class="fwrite">
+            <div class="fwrite_description" id="fwrite_description">
+                <form action="/{{ 'admin'|get_base }}/columns" method="POST" target="_self">
+                    <div class="admin_li">
+                        <span class="admin_span">添加栏目:</span><input class="admin_input" name="column_name" type='text' value="">
+                        <button type="submit">添加</button>
+                        <button type="reset">重置</button>
+                    </div>
+                </form>
+                <hr>
+                </br>
+                <div class="admin_li">
+                    <h3>栏目列表</h3>
+                </div>
+                </br>
+                <form action="/{{ 'admin'|get_base }}/columns/del" target="_self" method="POST">
+                <div class="admin_li" >
+                    <input style="float:left;" type="checkbox" onclick="SelectAll();"><span class="admin_span">全选/反选</span> <button type="submit">批量删除</button>
+                </div>
+                {% for c in columns %}
+                <div class="admin_li" id="{{ c.key }}">
+                    <input type="checkbox" name="columns" style="float:left;" value="{{ c.key }}"><span class="admin_span">{{ c.name }}</span><input class="admin_input" id="input_{{ c.key }}"style=" width: 128px; " value="请输入新名称"><a href="/{{ 'admin'|get_base }}/columns/del?key={{ c.key }}" target="_self">删除</a>&nbsp;<a href="javascript:;" onclick='update_column("{{ c.key }}");'>重命名</a></br>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div id="right_copy" class="hide">
+        <div class="logo">
+            <img src="/static/images/common/logo.png">
+        </div>
+        <div class="foot">
+            <div class="row">
+                <div class="powered">
+                    Powered By <a href="{{ 'fwrite'|get_url }}" target="blank">{{ 'Fwrite'|get_version }}</a><img src='/static/images/common/fooying.png' style=" margin-bottom: 4px; ">
+                </div>
+                <div class="copyright">
+                    Copyright © {{ 'copy'|get_year }} - {{ 'copy'|get_this_site }} - <a href="http://www.miibeian.gov.cn/" target="_blank">{{ 'test'|get_icp }}</a> 
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
