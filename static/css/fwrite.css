@@ -96,7 +96,7 @@ input, select, textarea {
 #left_panel .logo {
     display: block;
     background: url(../images/common/fwrite_icon.png) no-repeat 0 0;
-    width: 118px;
+#    width: 118px;
     height: 31px;
     line-height: 30px;
     padding: 0 0 0 35px;
@@ -104,6 +104,7 @@ input, select, textarea {
     font-size: 18px;
     font-weight: normal;
     color: #6a7178;
+    overflow:hidden;
 }
 
 #left_panel .header .back {
